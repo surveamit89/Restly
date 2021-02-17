@@ -17,6 +17,7 @@ namespace Restly
         {
             _navigationService = navigationService;
             //NavigateToFirstViewModel();
+            StartApp();
         }
 
         //public void Start(object hint = null)
@@ -27,6 +28,19 @@ namespace Restly
         protected override Task NavigateToFirstViewModel(object hint = null)
         {
             return NavigationService.Navigate<SplashViewModel>();
+        }
+        private async void StartApp()
+        {
+            try
+            {
+                await NavigationService.Navigate<SplashViewModel>();
+            }
+
+
+            catch (Exception)
+            {
+                
+            }
         }
 
     }
