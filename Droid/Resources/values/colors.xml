@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<color name="app_color">#2F9D44</color>
+	<color name="black_color">#000000</color>
+	<color name="white_color">#ffffff</color>
+	<color name="primary">#2196F3</color>
+	<color name="primaryDark">#1976D2</color>
+	<color name="accent">#96d1ff</color>
+	<color name="guide_back_color">#0E0B4C</color>
+	<color name="window_background">#F5F5F5</color>
+	<color name="transparent">#00000000</color>
+	<color name="app_black_color">#E0000000</color>
+	<color name="app_pink_color">#D90080</color>
+	<color name="gray_color">#979797</color>
+
+	<color name="text_hint_color">#AFAFAF</color>
+	<color name="hint_color">#80dedede</color>
+	<color name="text_color">#E0000000</color>
+	<color name="page_bg_color">#E9E9E9</color>
+	<color name="gray_text_color">#868585</color>
+	<color name="gray_border_color">#acacac</color>
+	<color name="white_text_color">#80ffffff</color>
+	<color name="semitransparent">#99000000</color>
+	<color name="light_app_color">#904B6BB3</color>
+</resources>

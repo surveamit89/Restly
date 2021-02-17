@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+     <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/app_color">
+        <ImageView
+            android:src="@drawable/back_arrow"
+            android:id="@+id/backImageView"
+            android:layout_width="36dp"
+            android:layout_height="24dp"
+             android:paddingStart="14.7dp"
+            android:layout_centerVertical="true"
+            app:MvxBind="Click BackCommand"/>
+        <TextView
+            android:text="My Cart List"
+            android:textAllCaps="true"
+            android:textSize="19.3dp"
+            android:paddingStart="12.7dp"
+            android:layout_toEndOf="@id/backImageView"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white_color"
+            android:fontFamily="@font/montserrat_regular"/>
+       
+
+    </RelativeLayout>
+    <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+           android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        app:MvxItemTemplate="@layout/cart_single_item"
+	        app:MvxBind="ItemsSource CartList;ItemClick RemoveItemCommand"/>
+</LinearLayout>

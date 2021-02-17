@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_color">
+    <LinearLayout
+        android:paddingHorizontal="7dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:weightSum="10">
+         <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+             <TextView
+            android:text="ITEM LOCATOR"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_bold"
+            app:MvxBind="Text Name"/>
+         </LinearLayout>
+         <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+           android:gravity="end"     
+        android:layout_height="30dp"
+        android:layout_weight="5"
+         app:MvxBind="Visibility IsRequired, Converter=Visibility">
+             <TextView
+            android:text="Optional"
+            android:textSize="16dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_regular"
+             android:backgroundTint="@color/hint_color"/>
+         </LinearLayout>
+    </LinearLayout>
+    <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+             android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        app:MvxItemTemplate="@layout/option_type_single_item"
+	        app:MvxBind="ItemsSource Options;"/>
+</LinearLayout>

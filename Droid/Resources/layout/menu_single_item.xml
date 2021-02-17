@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corner_white_box">
+    <FFImageLoading.Cross.MvxCachedImageView
+                android:id="@+id/itemimage"
+                android:src="@drawable/icon_bw"
+                 android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:MvxBind="ImagePath ImageUrl"/>
+    <LinearLayout
+        android:paddingHorizontal="7dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+         <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9">
+             <TextView
+            android:text="ITEM LOCATOR"
+            android:layout_marginTop="5dp"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_semibold"
+            app:MvxBind="Text Title"/>
+         </LinearLayout>
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1">
+             <TextView
+            android:text="4.5 "
+            android:textSize="12dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_semibold"
+            app:MvxBind="Text Rating"/>
+            <ImageView
+                android:src="@android:drawable/btn_star"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tint="@color/black_color"/>
+
+         </LinearLayout>
+         
+    </LinearLayout>
+    <HorizontalScrollView
+        android:paddingHorizontal="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+         <TextView
+            android:text="ITEM LOCATOR"
+            android:singleLine="true"
+            android:textSize="12dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/gray_color"
+            android:fontFamily="@font/montserrat_semibold"
+            app:MvxBind="Text Description"
+            android:scrollbars="horizontal"/>
+     </HorizontalScrollView>
+    <LinearLayout
+        android:paddingHorizontal="7dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1">
+             <TextView
+                android:text="$"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_color"/>
+
+             <TextView
+            android:text="4.5 "
+            android:textSize="12dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_semibold"
+            app:MvxBind="Text Price"/>
+           
+         </LinearLayout>
+         <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9">
+            <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+	        android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+	        app:MvxItemTemplate="@layout/tag_single_item"
+	        app:MvxBind="ItemsSource TagList;"/>
+         </RelativeLayout>
+        
+         
+    </LinearLayout>
+</LinearLayout>

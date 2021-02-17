@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_corner_white_box">
+    <FFImageLoading.Cross.MvxCachedImageView
+                android:id="@+id/itemimage"
+                android:src="@drawable/icon_bw"
+                 android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:MvxBind="ImagePath NavigationParam.SelectedMenu.ImageUrl"/>
+    <LinearLayout 
+        android:paddingHorizontal="10dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="10dp"
+      android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/top_rounded_corner_white_box">
+    
+    <LinearLayout
+        android:paddingHorizontal="7dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+         <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8">
+             <TextView
+            android:text="ITEM LOCATOR"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_bold"
+            app:MvxBind="Text NavigationParam.SelectedMenu.Title"/>
+         </LinearLayout>
+         <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+           android:gravity="end"     
+        android:layout_height="30dp"
+        android:layout_weight="2">
+             <TextView
+                android:text="$"
+                 android:layout_marginEnd="5dp"
+                android:textSize="16dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_color"
+               android:fontFamily="@font/montserrat_bold"/>
+
+             <TextView
+            android:text="4.5 "
+            android:textSize="16dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_bold"
+            app:MvxBind="Text NavigationParam.SelectedMenu.Price"/>
+           
+         </LinearLayout>
+    </LinearLayout>
+    <HorizontalScrollView
+        android:paddingHorizontal="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+         <TextView
+            android:text="ITEM LOCATOR"
+            android:singleLine="true"
+            android:textSize="12dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/gray_color"
+            android:fontFamily="@font/montserrat_semibold"
+            app:MvxBind="Text NavigationParam.SelectedMenu.Description"
+            android:scrollbars="horizontal"/>
+     </HorizontalScrollView>
+    <LinearLayout
+        android:paddingHorizontal="7dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+         <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+            <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+	        app:MvxItemTemplate="@layout/tag_single_item"
+	        app:MvxBind="ItemsSource NavigationParam.SelectedMenu.TagList;"/>
+         </RelativeLayout>
+    </LinearLayout>
+    <ScrollView
+            android:layout_marginBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+     <LinearLayout 
+        android:paddingHorizontal="10dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="10dp"
+      android:layout_height="wrap_content">
+    <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+             android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        app:MvxItemTemplate="@layout/product_detail_single_item"
+	        app:MvxBind="ItemsSource SelectedProduct.Options;"/>
+    <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
+             android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+	        app:MvxItemTemplate="@layout/product_similar_single_item"
+	        app:MvxBind="ItemsSource SelectedProduct.FrequentlyBoughtProducts;"/>
+    <TextView
+            android:text="Specific Preferences?"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black_color"
+            android:fontFamily="@font/montserrat_bold"/>
+    <RelativeLayout
+       android:background="@drawable/rounded_corner"
+       android:layout_width="match_parent"
+       android:layout_height="100dp">
+                    <EditText
+                        android:background="@color/transparent"
+             android:layout_margin="5dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+              android:maxLines="5"
+              android:elevation="3dp"
+              android:textColorHint="@color/app_black_color"
+              android:hint="Add specific preferences"
+              android:fontFamily="@font/montserrat_regular"
+              android:textSize="14dp"/>
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>
+                
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+       app:MvxBind="Click BackCommand">
+
+   <ImageView
+            android:src="@drawable/back_arrow"
+            android:id="@+id/backImageView"
+           android:layout_marginTop="20dp"
+            android:layout_width="36dp"
+            android:layout_height="24dp"
+             android:paddingStart="14.7dp"
+            />
+   </RelativeLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="10"
+        android:elevation="5dp"
+        android:background="@drawable/rounded_shadow">
+        <LinearLayout
+            android:layout_weight="5"
+            android:paddingHorizontal="30dp"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:weightSum="3"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_weight="1"
+                android:src="@drawable/ic_minus_count"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:tint="@color/app_color"
+                app:MvxBind="Click DecreaseCountCommand"/>
+            <TextView
+                android:layout_weight="1"
+                android:text="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="18dp"
+                android:textColor="@color/black_color"
+                android:fontFamily="@font/montserrat_bold"
+                app:MvxBind="Text CartProductCount"/>
+
+             <FFImageLoading.Cross.MvxCachedImageView
+                android:layout_weight="1"
+                android:src="@drawable/ic_plus_count"
+                android:layout_width="0dp"
+                android:tint="@color/app_color"
+                android:layout_height="match_parent"
+                app:MvxBind="Click IncreaseCountCommand"/>
+        </LinearLayout>
+        <RelativeLayout
+             android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+            android:text="Add To Cart"
+            android:textSize="16dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/white_color"
+            android:fontFamily="@font/montserrat_regular"
+             android:backgroundTint="@color/app_color"
+                app:MvxBind="Click AddToCartCommand"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
