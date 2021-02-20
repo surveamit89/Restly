@@ -33,6 +33,7 @@ namespace Restly.Services.Restaurant
             {
                 var request = new RestRequest(AppConstants.RestApi.GetProductById);
                 request.AddParameter("productId", selectedProduct.Id);
+                //request.AddParameter("productId", 44);
                 var response = await BaseWebService.ExecuteGet<GetProductByIdResponse>(request);
 
                 return response;

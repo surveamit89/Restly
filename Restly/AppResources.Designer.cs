@@ -124,6 +124,15 @@ namespace Restly {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Wait....
+        /// </summary>
+        internal static string Lbl_PlzWait {
+            get {
+                return ResourceManager.GetString("Lbl_PlzWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         internal static string Lbl_Yes {

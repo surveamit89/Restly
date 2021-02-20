@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_marginBottom="10dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_corner_white_box">
+    android:background="@color/white_color">
     <FFImageLoading.Cross.MvxCachedImageView
                 android:id="@+id/itemimage"
                 android:src="@drawable/icon_bw"
                  android:scaleType="fitXY"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="130dp"
                 app:MvxBind="ImagePath ImageUrl"/>
     <LinearLayout
-        android:paddingHorizontal="7dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:weightSum="10">
          <LinearLayout
         android:orientation="vertical"
@@ -52,6 +51,7 @@
             android:fontFamily="@font/montserrat_semibold"
             app:MvxBind="Text Rating"/>
             <ImageView
+                android:padding="3dp"
                 android:src="@android:drawable/btn_star"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,14 +61,12 @@
          
     </LinearLayout>
     <HorizontalScrollView
-        android:paddingHorizontal="7dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="20dp">
          <TextView
             android:text="ITEM LOCATOR"
             android:singleLine="true"
             android:textSize="12dp"
-            android:paddingBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/gray_color"
@@ -77,15 +75,14 @@
             android:scrollbars="horizontal"/>
      </HorizontalScrollView>
     <LinearLayout
-        android:paddingHorizontal="7dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:weightSum="10">
         <LinearLayout
         android:orientation="horizontal"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:layout_weight="1">
              <TextView
                 android:text="$"

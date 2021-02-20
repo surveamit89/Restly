@@ -19,7 +19,7 @@
              <TextView
             android:text="ITEM LOCATOR"
             android:layout_marginTop="5dp"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -33,7 +33,7 @@
            android:gravity="end"     
         android:layout_height="30dp"
         android:layout_weight="5"
-         app:MvxBind="Visibility IsRequired, Converter=Visibility">
+         app:MvxBind="Visibility ShowOptionalLabel, Converter=Visibility">
              <TextView
             android:text="Optional"
             android:textSize="16dp"

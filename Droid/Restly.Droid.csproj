@@ -76,14 +76,15 @@
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android.Export" />
-    <Reference Include="MvvmCross, Version=7.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.7.1.2\lib\monoandroid10.0\MvvmCross.dll</HintPath>
+    <Reference Include="MvvmCross, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.7.0.0\lib\monoandroid10.0\MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.DroidX.RecyclerView, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.DroidX.RecyclerView.7.0.0\lib\monoandroid10.0\MvvmCross.DroidX.RecyclerView.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Plugin.Color, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Color.6.4.2\lib\monoandroid10.0\MvvmCross.Plugin.Color.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MvvmCross.Plugin.File, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.File.6.4.2\lib\monoandroid10.0\MvvmCross.Plugin.File.dll</HintPath>
@@ -510,6 +511,18 @@
     <AndroidResource Include="Resources\layout\cart_single_item.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\shadow_effect.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_minus_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_minus_state.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets')" />

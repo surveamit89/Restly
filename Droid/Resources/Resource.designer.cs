@@ -3331,8 +3331,6 @@ namespace Restly.Droid
 			global::MvvmCross.Resource.Color.abc_btn_colored_borderless_text_material = global::Restly.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
 			global::MvvmCross.Resource.Color.abc_btn_colored_text_material = global::Restly.Droid.Resource.Color.abc_btn_colored_text_material;
 			global::MvvmCross.Resource.Color.abc_color_highlight_material = global::Restly.Droid.Resource.Color.abc_color_highlight_material;
-			global::MvvmCross.Resource.Color.abc_decor_view_status_guard = global::Restly.Droid.Resource.Color.abc_decor_view_status_guard;
-			global::MvvmCross.Resource.Color.abc_decor_view_status_guard_light = global::Restly.Droid.Resource.Color.abc_decor_view_status_guard_light;
 			global::MvvmCross.Resource.Color.abc_hint_foreground_material_dark = global::Restly.Droid.Resource.Color.abc_hint_foreground_material_dark;
 			global::MvvmCross.Resource.Color.abc_hint_foreground_material_light = global::Restly.Droid.Resource.Color.abc_hint_foreground_material_light;
 			global::MvvmCross.Resource.Color.abc_primary_text_disable_only_material_dark = global::Restly.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
@@ -3353,8 +3351,6 @@ namespace Restly.Droid
 			global::MvvmCross.Resource.Color.abc_tint_switch_track = global::Restly.Droid.Resource.Color.abc_tint_switch_track;
 			global::MvvmCross.Resource.Color.accent_material_dark = global::Restly.Droid.Resource.Color.accent_material_dark;
 			global::MvvmCross.Resource.Color.accent_material_light = global::Restly.Droid.Resource.Color.accent_material_light;
-			global::MvvmCross.Resource.Color.androidx_core_ripple_material_light = global::Restly.Droid.Resource.Color.androidx_core_ripple_material_light;
-			global::MvvmCross.Resource.Color.androidx_core_secondary_text_default_material_light = global::Restly.Droid.Resource.Color.androidx_core_secondary_text_default_material_light;
 			global::MvvmCross.Resource.Color.background_floating_material_dark = global::Restly.Droid.Resource.Color.background_floating_material_dark;
 			global::MvvmCross.Resource.Color.background_floating_material_light = global::Restly.Droid.Resource.Color.background_floating_material_light;
 			global::MvvmCross.Resource.Color.background_material_dark = global::Restly.Droid.Resource.Color.background_material_dark;
@@ -4563,7 +4559,6 @@ namespace Restly.Droid
 			global::MvvmCross.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::Restly.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
 			global::MvvmCross.Resource.Style.Theme_AppCompat_Dialog_Alert = global::Restly.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
 			global::MvvmCross.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::Restly.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::MvvmCross.Resource.Style.Theme_AppCompat_Empty = global::Restly.Droid.Resource.Style.Theme_AppCompat_Empty;
 			global::MvvmCross.Resource.Style.Theme_AppCompat_Light = global::Restly.Droid.Resource.Style.Theme_AppCompat_Light;
 			global::MvvmCross.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::Restly.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
 			global::MvvmCross.Resource.Style.Theme_AppCompat_Light_Dialog = global::Restly.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
@@ -12238,11 +12233,11 @@ namespace Restly.Droid
 			// aapt resource value: 0x7F07006C
 			public const int design_snackbar_background = 2131165292;
 			
-			// aapt resource value: 0x7F07007C
-			public const int Icon = 2131165308;
+			// aapt resource value: 0x7F07007F
+			public const int Icon = 2131165311;
 			
-			// aapt resource value: 0x7F07007D
-			public const int Icon_BW = 2131165309;
+			// aapt resource value: 0x7F070080
+			public const int Icon_BW = 2131165312;
 			
 			// aapt resource value: 0x7F07006D
 			public const int ic_arrow_down_24dp = 2131165293;
@@ -12263,109 +12258,121 @@ namespace Restly.Droid
 			public const int ic_menu = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int ic_minus_count = 2131165299;
+			public const int ic_minus = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int ic_mtrl_chip_checked_black = 2131165300;
+			public const int ic_minus_count = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int ic_mtrl_chip_checked_circle = 2131165301;
+			public const int ic_minus_disable = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int ic_mtrl_chip_close_circle = 2131165302;
+			public const int ic_minus_state = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int ic_order = 2131165303;
+			public const int ic_mtrl_chip_checked_black = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int ic_plus_count = 2131165304;
+			public const int ic_mtrl_chip_checked_circle = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int ic_setting = 2131165305;
+			public const int ic_mtrl_chip_close_circle = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int ic_successstatus = 2131165306;
+			public const int ic_order = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int ic_tab = 2131165307;
+			public const int ic_plus_count = 2131165307;
+			
+			// aapt resource value: 0x7F07007C
+			public const int ic_setting = 2131165308;
+			
+			// aapt resource value: 0x7F07007D
+			public const int ic_successstatus = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int mtrl_snackbar_background = 2131165310;
-			
-			// aapt resource value: 0x7F07007F
-			public const int mtrl_tabs_default_indicator = 2131165311;
-			
-			// aapt resource value: 0x7F070080
-			public const int navigation_empty_icon = 2131165312;
+			public const int ic_tab = 2131165310;
 			
 			// aapt resource value: 0x7F070081
-			public const int notification_action_background = 2131165313;
+			public const int mtrl_snackbar_background = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int notification_bg = 2131165314;
+			public const int mtrl_tabs_default_indicator = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int notification_bg_low = 2131165315;
+			public const int navigation_empty_icon = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int notification_bg_low_normal = 2131165316;
+			public const int notification_action_background = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int notification_bg_low_pressed = 2131165317;
+			public const int notification_bg = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int notification_bg_normal = 2131165318;
+			public const int notification_bg_low = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int notification_bg_normal_pressed = 2131165319;
+			public const int notification_bg_low_normal = 2131165319;
 			
 			// aapt resource value: 0x7F070088
-			public const int notification_icon_background = 2131165320;
+			public const int notification_bg_low_pressed = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int notification_template_icon_bg = 2131165321;
+			public const int notification_bg_normal = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int notification_template_icon_low_bg = 2131165322;
+			public const int notification_bg_normal_pressed = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int notification_tile_bg = 2131165323;
+			public const int notification_icon_background = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int notify_panel_notification_icon_bg = 2131165324;
+			public const int notification_template_icon_bg = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int preference_list_divider_material = 2131165325;
-			
-			// aapt resource value: 0x7F070091
-			public const int roundedbg = 2131165329;
-			
-			// aapt resource value: 0x7F070092
-			public const int roundedbgdark = 2131165330;
+			public const int notification_template_icon_low_bg = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int rounded_corner = 2131165326;
+			public const int notification_tile_bg = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int rounded_corner_white_box = 2131165327;
+			public const int notify_panel_notification_icon_bg = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int rounded_shadow = 2131165328;
-			
-			// aapt resource value: 0x7F070093
-			public const int splash_back = 2131165331;
+			public const int preference_list_divider_material = 2131165328;
 			
 			// aapt resource value: 0x7F070094
-			public const int splash_screen = 2131165332;
+			public const int roundedbg = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int tooltip_frame_dark = 2131165333;
+			public const int roundedbgdark = 2131165333;
+			
+			// aapt resource value: 0x7F070091
+			public const int rounded_corner = 2131165329;
+			
+			// aapt resource value: 0x7F070092
+			public const int rounded_corner_white_box = 2131165330;
+			
+			// aapt resource value: 0x7F070093
+			public const int rounded_shadow = 2131165331;
 			
 			// aapt resource value: 0x7F070096
-			public const int tooltip_frame_light = 2131165334;
+			public const int shadow_effect = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int top_rounded_corner_white_box = 2131165335;
+			public const int splash_back = 2131165335;
+			
+			// aapt resource value: 0x7F070098
+			public const int splash_screen = 2131165336;
+			
+			// aapt resource value: 0x7F070099
+			public const int tooltip_frame_dark = 2131165337;
+			
+			// aapt resource value: 0x7F07009A
+			public const int tooltip_frame_light = 2131165338;
+			
+			// aapt resource value: 0x7F07009B
+			public const int top_rounded_corner_white_box = 2131165339;
 			
 			static Drawable()
 			{

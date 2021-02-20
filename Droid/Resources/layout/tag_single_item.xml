@@ -5,9 +5,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    android:background="@drawable/rounded_corner_white_box">
+    android:background="@drawable/rounded_corner_white_box"
+    android:padding="1dp">
     <TextView
         android:text="Text"
+        android:singleLine="true"
         android:layout_marginHorizontal="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -138,6 +138,9 @@
   <data name="Lbl_OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Lbl_PlzWait" xml:space="preserve">
+    <value>Please Wait...</value>
+  </data>
   <data name="Lbl_Yes" xml:space="preserve">
     <value>Yes</value>
   </data>

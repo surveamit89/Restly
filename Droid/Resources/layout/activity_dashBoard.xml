@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/page_bg_color">
+    android:background="@color/white_color">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="85dp"
             android:paddingHorizontal="15dp"
          android:background="@color/black_color"
         android:layout_alignParentTop="true">
@@ -21,12 +21,13 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="10">
+                android:layout_marginTop="5dp"
+                android:paddingVertical="5dp"
+                android:weightSum="11">
                 <TextView
                     android:layout_weight="5"
-                  android:paddingVertical="8dp"
+                    android:paddingTop="3dp"
                   android:text="Food and Drinks"
-                  android:layout_marginTop="5dp"
                   android:textSize="18dp"
                   android:layout_width="0dp"
                   android:layout_height="wrap_content"
@@ -34,25 +35,27 @@
                   android:fontFamily="@font/montserrat_bold"
                 app:MvxBind="Text MenuTitle"/>
                  <LinearLayout 
-                 android:layout_weight="5"
+                 android:layout_weight="6"
                  android:layout_width="0dp"
                  android:gravity="end"
                  android:orientation="horizontal"
                   android:layout_height="wrap_content"
                   app:MvxBind="Visibility LocationVisibility, Converter=Visibility">
                   <FFImageLoading.Cross.MvxCachedImageView
-                android:paddingStart="5dp"
                 android:paddingVertical="2dp"
+                android:paddingStart="20dp"
                 android:layout_marginTop="5dp"
+                android:gravity="end"
                 android:id="@+id/itemimage"
                 android:src="@drawable/ic_location"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:tint="@color/gray_text_color"/>
+                android:layout_height="25dp"
+                android:tint="@color/white_color"/>
                   <TextView
                     android:text="Restaurant"
-                    android:textSize="14dp"
-                    android:layout_gravity="center"
+                    android:singleLine="true"
+                    android:textSize="12dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:drawableTint="@color/white_color"
                     android:layout_height="wrap_content"
@@ -93,6 +96,7 @@
             </LinearLayout>
              
             <LinearLayout
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,10 +113,10 @@
                 android:background="@drawable/rounded_corner_white_box"
                     android:drawableTint="@color/gray_color"
                 android:layout_width="0dp"
-                android:layout_height="41.3dp"
+                android:layout_height="30dp"
                 android:hint="Restaurant or product"
                 android:lineSpacingExtra="0sp"
-                android:textSize="17dp"
+                android:textSize="12dp"
                 android:textColorHint="@color/gray_text_color"
                 android:textColor="@color/gray_text_color"
                 android:fontFamily="@font/montserrat_regular"
@@ -120,13 +124,13 @@
                  <TextView
                     android:layout_weight="2"
             android:text="Clear"
-            android:textSize="18dp"
+            android:textSize="12dp"
                     android:paddingStart="15dp"
              android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/app_color"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/montserrat_semibold"
             app:MvxBind="Click ClearSearchCommand"/>
              </LinearLayout>
     </LinearLayout>
@@ -139,7 +143,7 @@
                 android:layout_height="wrap_content">
                  <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
 	        android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="8dp"
             android:id="@+id/CategoriesItems"
             android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
@@ -151,7 +155,7 @@
             android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="70dp">
+            android:layout_marginBottom="50dp">
             <TextView
             android:text="Sorry, No Data Found."
             android:textSize="18dp"
@@ -174,23 +178,7 @@
 	        android:layout_height="wrap_content"
 	        app:MvxItemTemplate="@layout/menu_single_item"
 	        app:MvxBind="ItemsSource MenuList;ItemClick SelectMenuCommand;Visibility LocationVisibility, Converter=Visibility"/>
-            <RelativeLayout
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="60dp"
-                android:background="@drawable/ic_hand_round"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:MvxBind="Visibility LocationVisibility, Converter=Visibility;Click RaisedHandCommand">
-              <ffimageloading.cross.MvxCachedImageView
-                    android:scaleType="fitXY"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_hand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-        android:tint="@color/white_color"/>
-             </RelativeLayout>
+            
          </RelativeLayout>
             </LinearLayout>
             <RelativeLayout
@@ -209,35 +197,60 @@
             android:textColor="@color/app_black_color"
             android:fontFamily="@font/montserrat_regular"/>
              </RelativeLayout>
+            <RelativeLayout
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/ic_hand_round"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:MvxBind="Visibility LocationVisibility, Converter=Visibility;Click RaisedHandCommand">
+              <ffimageloading.cross.MvxCachedImageView
+                    android:scaleType="fitXY"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_hand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+        android:tint="@color/white_color"/>
+             </RelativeLayout>
          </RelativeLayout>
        
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/shadow_effect"/>
+        <LinearLayout
+            android:paddingTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:background="@color/white_color"
         android:weightSum="8">
          <LinearLayout 
             android:layout_weight="2"
             android:orientation="vertical"
-    android:layout_width="0dp"
-     android:layout_marginEnd="10dp"
-    android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="40dp"
             app:MvxBind="Click MenuCommand">
     <FFImageLoading.Cross.MvxCachedImageView
-                android:layout_marginTop="5dp"
-                android:padding="5dp"
                 android:src="@drawable/ic_menu"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:tint="@color/app_color"/>
     <TextView
             android:text="Menu"
         android:layout_marginHorizontal="3dp"
            android:singleLine="true"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
@@ -250,22 +263,20 @@
          <LinearLayout 
             android:layout_weight="2"
             android:orientation="vertical"
-    android:layout_width="0dp"
-     android:layout_marginEnd="10dp"
-    android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="40dp"
     app:MvxBind="Click OrderCommand">
     <FFImageLoading.Cross.MvxCachedImageView
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_order"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
             android:tint="@color/gray_text_color"/>
     <TextView
             android:text="Order"
         android:layout_marginHorizontal="3dp"
            android:singleLine="true"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
@@ -277,22 +288,20 @@
          <LinearLayout 
             android:layout_weight="2"
             android:orientation="vertical"
-    android:layout_width="0dp"
-     android:layout_marginEnd="10dp"
-    android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="40dp"
     app:MvxBind="Click TabCommand">
     <FFImageLoading.Cross.MvxCachedImageView
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_tab"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                 android:layout_width="match_parent"
+                android:layout_height="20dp"
                 android:tint="@color/gray_text_color"/>
     <TextView
             android:text="Tab"
         android:layout_marginHorizontal="3dp"
            android:singleLine="true"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
@@ -304,22 +313,20 @@
          <LinearLayout 
             android:layout_weight="2"
             android:orientation="vertical"
-    android:layout_width="0dp"
-     android:layout_marginEnd="10dp"
-    android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="40dp"
     app:MvxBind="Click AccountCommand">
     <FFImageLoading.Cross.MvxCachedImageView
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_setting"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                 android:layout_width="match_parent"
+                android:layout_height="20dp"
                 android:tint="@color/gray_text_color"/>
     <TextView
             android:text="Account"
         android:layout_marginHorizontal="3dp"
            android:singleLine="true"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
@@ -328,5 +335,6 @@
              android:textColor="@color/text_color"
             android:fontFamily="@font/montserrat_regular"/>
 </LinearLayout>
+    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

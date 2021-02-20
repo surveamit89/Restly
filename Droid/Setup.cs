@@ -51,7 +51,7 @@ namespace Restly.Droid
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            var mvxFragmentsPresenter = new MvxAndroidViewPresenter((IEnumerable<System.Reflection.Assembly>)AndroidViewAssemblies);
+            var mvxFragmentsPresenter = new MvxAndroidViewPresenter(AndroidViewAssemblies);
             Mvx.IoCProvider.RegisterSingleton<IMvxAndroidViewPresenter>(mvxFragmentsPresenter);
             return mvxFragmentsPresenter;
         }

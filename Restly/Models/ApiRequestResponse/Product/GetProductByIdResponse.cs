@@ -135,6 +135,9 @@ namespace Restly.Models.ApiRequestResponse.Product
 
         [JsonProperty("isRequired")]
         public bool IsRequired { get; set; }
+        public bool IsSingleChoice { get { return Type == 0; } }
+        public bool IsMultiChoice { get { return !IsSingleChoice; } }
+        public bool ShowOptionalLabel { get { return !IsRequired; } }
     }
 
     public partial class OptionData
@@ -159,5 +162,9 @@ namespace Restly.Models.ApiRequestResponse.Product
 
         [JsonProperty("isRequired")]
         public bool IsRequired { get; set; }
+        public bool IsSingleChoice { get; set; }
+        public bool IsMultiChoice { get { return !IsSingleChoice; } }
+        public bool ShowOptionalLabel { get { return !IsRequired; } }
+        public bool IsSelected { get; set; }
     }
 }

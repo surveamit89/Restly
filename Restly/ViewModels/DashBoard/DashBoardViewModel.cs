@@ -210,7 +210,7 @@ namespace Restly.ViewModels.DashBoard
             }
         }
 
-        private string _noDataLabel=AppResources.Lbl_NoData;
+        private string _noDataLabel=AppResources.Lbl_PlzWait;
         public string NoDataLabel
         {
             get { return _noDataLabel; }
@@ -331,14 +331,15 @@ namespace Restly.ViewModels.DashBoard
             RestaurantsList = new ObservableCollection<RestaurantData>();
             RestaurantsList = OGRestaurantsList;
             CategoryList = new ObservableCollection<RestaurantsCategory>();
-            LoadData().GetAwaiter();
+            LoadData();
         }
        
-        public async Task LoadData()
+        public async void LoadData()
         {
             try
             {
                 Mvx.IoCProvider.Resolve<IAppLoader>().ShowIndicator();
+                NoDataLabel = AppResources.Lbl_PlzWait;
                 var response = await RestaurantService.ProcessToInitRestaurants();
                 //var response1 = await RestaurantService.ProcessToGetRestaurants();
                 Mvx.IoCProvider.Resolve<IAppLoader>().StopIndicator();
@@ -523,7 +524,7 @@ namespace Restly.ViewModels.DashBoard
                 RestaurantsList = new ObservableCollection<RestaurantData>();
                 RestaurantsList = OGRestaurantsList;
                 CategoryList = new ObservableCollection<RestaurantsCategory>();
-                LoadData().GetAwaiter();
+                LoadData();
             }
             catch (Exception ex)
             {
