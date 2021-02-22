@@ -150,7 +150,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:orientation="horizontal"
 	        app:MvxItemTemplate="@layout/category_single_item"
-	        app:MvxBind="ItemsSource CategoryList;ItemClick SelectCategoryCommand;BackgroundColor StringToColor(SelectedBackgroundColor)"/>
+	        app:MvxBind="ItemsSource CategoryList;ItemClick SelectCategoryCommand;"/>
         <RelativeLayout
             android:paddingHorizontal="15dp"
             android:layout_width="match_parent"

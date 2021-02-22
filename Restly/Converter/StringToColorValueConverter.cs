@@ -6,7 +6,6 @@ namespace Restly.Converter
 {
     public class StringToColorValueConverter : MvxColorValueConverter
     {
-        
         private static readonly Color BlackTextColor = Color.FromArgb(0, 0, 0);
         private static readonly Color WhiteTextColor = Color.FromArgb(255, 255, 255);
         private static readonly Color AppTextColor = Color.FromArgb(47, 157, 68);

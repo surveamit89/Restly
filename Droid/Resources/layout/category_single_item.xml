@@ -14,8 +14,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_color">
-   <!-- app:MvxBind="BackgroundColor SelectedBackgroundColor, Converter=StringToColorValue">-->
+    android:background="@color/white_color"
+    app:MvxBind="BackgroundColor StringToColor(SelectedBackgroundColor)">
 
     <FFImageLoading.Cross.MvxCachedImageView
                 android:scaleType="fitXY"
@@ -37,8 +37,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/black_color"
             android:fontFamily="@font/montserrat_semibold"
-            app:MvxBind="Text Title;"/>
-           <!--app:MvxBind="Text Title;TextColor SelectedTextColor, Converter=StringToColor;BackgroundColor SelectedBackgroundColor, Converter=StringToColor"-->
+           app:MvxBind="Text Title;TextColor StringToColor(SelectedTextColor)"/>
 </LinearLayout>
 </android.support.v7.widget.CardView>
   

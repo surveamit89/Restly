@@ -80,26 +80,8 @@ namespace Restly.Models.ApiRequestResponse.Product
             }
         }
         public int CartProductCount { get; set; }
-        //public Command RemoveItem { get; set; }
-
-        //private IMvxCommand _removeItemCommand { get; set; }
-
-        //public ICommand RemoveItemCommand
-        //{
-        //    get
-        //    {
-        //        return _removeItemCommand ?? (_removeItemCommand = new MvxCommand(ProcessRemoveItemCommand));
-        //    }
-        //}
-
-
-        //private void ProcessRemoveItemCommand()
-        //{
-        //    RemoveItem?.Execute(this);
-        //}
-
     }
-    public partial class FrequentlyBoughtProduct
+    public partial class FrequentlyBoughtProduct:MvxViewModel
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -112,6 +94,50 @@ namespace Restly.Models.ApiRequestResponse.Product
 
         [JsonProperty("price")]
         public long Price { get; set; }
+
+        
+
+        private bool _isSelected = false;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+                RaisePropertyChanged(() => IsSelected);
+                if (value)
+                {
+                    SelectedBackgroundColor = "AppColor";
+                    SelectedTextColor = "WhiteColor";
+                }
+                else
+                {
+                    SelectedBackgroundColor = "WhiteColor";
+                    SelectedTextColor = "BlackColor";
+                }
+            }
+        }
+
+        private string _selectedBackgroundColor = "WhiteColor";
+        public string SelectedBackgroundColor
+        {
+            get { return _selectedBackgroundColor; }
+            set
+            {
+                _selectedBackgroundColor = value;
+                RaisePropertyChanged(() => SelectedBackgroundColor);
+            }
+        }
+        private string _selectedTextColor = "BlackColor";
+        public string SelectedTextColor
+        {
+            get { return _selectedTextColor; }
+            set
+            {
+                _selectedTextColor = value;
+                RaisePropertyChanged(() => SelectedTextColor);
+            }
+        }
     }
     public partial class ProductOption
     {
@@ -140,7 +166,7 @@ namespace Restly.Models.ApiRequestResponse.Product
         public bool ShowOptionalLabel { get { return !IsRequired; } }
     }
 
-    public partial class OptionData
+    public partial class OptionData:MvxViewModel
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -165,6 +191,35 @@ namespace Restly.Models.ApiRequestResponse.Product
         public bool IsSingleChoice { get; set; }
         public bool IsMultiChoice { get { return !IsSingleChoice; } }
         public bool ShowOptionalLabel { get { return !IsRequired; } }
-        public bool IsSelected { get; set; }
+
+        private bool _isSelected = false;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+                RaisePropertyChanged(() => IsSelected);
+            }
+        }
+
+        [JsonIgnore]
+        public IMvxCommand ItemSelectedCommand { get; set; }
+        [JsonIgnore]
+        private IMvxCommand _itemSelected { get; set; }
+        [JsonIgnore]
+        public IMvxCommand ItemSelected
+        {
+            get
+            {
+                return _itemSelected ?? (_itemSelected = new MvxCommand(ProcessItemSelected));
+            }
+        }
+
+
+        private void ProcessItemSelected()
+        {
+            ItemSelectedCommand?.Execute(this);
+        }
     }
 }

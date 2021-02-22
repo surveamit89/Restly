@@ -131,7 +131,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:orientation="horizontal"
 	        app:MvxItemTemplate="@layout/product_similar_single_item"
-	        app:MvxBind="ItemsSource SelectedProduct.FrequentlyBoughtProducts;"/>
+	        app:MvxBind="ItemsSource SelectedProduct.FrequentlyBoughtProducts;ItemClick SelectMoreItemCommand"/>
     <TextView
             android:text="Specific Preferences?"
             android:layout_marginTop="5dp"

@@ -14,14 +14,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:background="@color/white_color">
-    <FFImageLoading.Cross.MvxCachedImageView
+    app:MvxBind="BackgroundColor StringToColor(SelectedBackgroundColor)">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    
+            <FFImageLoading.Cross.MvxCachedImageView
                 android:scaleType="fitXY"
                 android:id="@+id/itemimage"
                 android:src="@drawable/icon_bw"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 app:MvxBind="ImagePath ImageUrl"/>
+             <FFImageLoading.Cross.MvxCachedImageView
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_selected_black"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="5dp"
+                android:tint="@color/app_color"
+                app:MvxBind="Visibility IsSelected, Converter=Visibility"/>
+            </RelativeLayout>
     <TextView
             android:text="ITEM LOCATOR "
         android:layout_marginTop="5dp"
@@ -35,8 +49,7 @@
             android:layout_height="30dp"
             android:textColor="@color/black_color"
             android:fontFamily="@font/montserrat_regular"
-        app:MvxBind="Text Name"/>
-            <!--app:MvxBind="Text Title;TextColor SelectedTextColor,Converter=StringToColor"/>-->
+            app:MvxBind="Text Name;TextColor StringToColor(SelectedTextColor)"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -52,7 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black_color"
-               android:fontFamily="@font/montserrat_bold"/>
+               android:fontFamily="@font/montserrat_bold"
+                app:MvxBind="TextColor StringToColor(SelectedTextColor)"/>
 
              <TextView
             android:text="4.5 "
@@ -64,7 +78,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black_color"
             android:fontFamily="@font/montserrat_bold"
-            app:MvxBind="Text Price"/>
+            app:MvxBind="Text Price;TextColor StringToColor(SelectedTextColor)"/>
            
          </LinearLayout>
 </LinearLayout>

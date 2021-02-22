@@ -84,10 +84,9 @@
     </Reference>
     <Reference Include="MvvmCross.Plugin.Color, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Color.6.4.2\lib\monoandroid10.0\MvvmCross.Plugin.Color.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="MvvmCross.Plugin.File, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Plugin.File.6.4.2\lib\monoandroid10.0\MvvmCross.Plugin.File.dll</HintPath>
+    <Reference Include="MvvmCross.Plugin.File, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.File.7.0.0\lib\monoandroid10.0\MvvmCross.Plugin.File.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Plugin.Messenger, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Messenger.6.4.2\lib\netstandard2.0\MvvmCross.Plugin.Messenger.dll</HintPath>
@@ -523,6 +522,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_minus_state.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_selected_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_unchecked_cb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_checked_cb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkbox_state.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets')" />

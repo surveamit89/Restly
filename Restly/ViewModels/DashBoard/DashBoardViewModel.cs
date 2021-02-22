@@ -166,17 +166,6 @@ namespace Restly.ViewModels.DashBoard
             }
         }
 
-        private string _selectedBackgroundColor = "WhiteColor";
-        public string SelectedBackgroundColor
-        {
-            get { return _selectedBackgroundColor; }
-            set
-            {
-                _selectedBackgroundColor = value;
-                RaisePropertyChanged(() => SelectedBackgroundColor);
-            }
-        }
-
         private string _menuTitle = "Food & Drinks";
         public string MenuTitle
         {
@@ -333,7 +322,9 @@ namespace Restly.ViewModels.DashBoard
             CategoryList = new ObservableCollection<RestaurantsCategory>();
             LoadData();
         }
-       
+       /// <summary>
+       /// Initialising restaurant
+       /// </summary>
         public async void LoadData()
         {
             try
@@ -353,7 +344,7 @@ namespace Restly.ViewModels.DashBoard
                         OGRestaurantsList = response.Data.RestaurantFirstPage.RestaurantsList;
                         RestaurantsList = OGRestaurantsList;
                         CategoryList = response.Data.RestaurantsCategories;
-                        CategoryList.Insert(0, new RestaurantsCategory { Id = 0, Title = "All", ImageUrl = CategoryList[1].ImageUrl });
+                        CategoryList.Insert(0, new RestaurantsCategory { Id = 0, Title = "All", ImageUrl = CategoryList[1].ImageUrl,SelectedBackgroundColor="AppColor",SelectedTextColor="WhiteColor" });
                     }
                     else
                     {
@@ -403,7 +394,6 @@ namespace Restly.ViewModels.DashBoard
                 else
                 {
                     SelectedCategory = selectedCategory;
-                    //SelectedBackgroundColor = "AppColor";
                     foreach (var item in CategoryList)
                     {
                         if (item.Id == selectedCategory.Id)
@@ -465,7 +455,7 @@ namespace Restly.ViewModels.DashBoard
                         MenuList = response.Data.MenuItemsFirstPage.Data;
                         OGMenuList = MenuList;
                         CategoryList = response.Data.RestaurantsCategories;
-                        CategoryList.Insert(0, new RestaurantsCategory { Id = 0, Title = "All", ImageUrl = CategoryList[1].ImageUrl });
+                        CategoryList.Insert(0, new RestaurantsCategory { Id = 0, Title = "All", ImageUrl = CategoryList[1].ImageUrl, SelectedBackgroundColor = "AppColor", SelectedTextColor = "WhiteColor" });
                     }
                     else
                     {

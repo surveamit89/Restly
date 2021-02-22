@@ -83,11 +83,14 @@
     <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.7.0.0\lib\xamarinios10\MvvmCross.dll</HintPath>
+    </Reference>
     <Reference Include="MvvmCross.Plugin.Color, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Color.6.4.2\lib\xamarinios10\MvvmCross.Plugin.Color.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Plugin.File, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Plugin.File.6.4.2\lib\xamarinios10\MvvmCross.Plugin.File.dll</HintPath>
+    <Reference Include="MvvmCross.Plugin.File, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.File.7.0.0\lib\xamarinios10\MvvmCross.Plugin.File.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Connectivity, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
@@ -102,9 +105,6 @@
       <HintPath>..\packages\Xamarin.Essentials.1.5.3.2\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="MvvmCross">
-      <HintPath>..\packages\MvvmCross.7.0.0\lib\xamarinios10\MvvmCross.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK-1.0" />
     <Reference Include="System.Drawing.Common.dll" />
   </ItemGroup>

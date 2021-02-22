@@ -82,10 +82,6 @@ namespace Restly.ViewModels.Order
                 else
                 {
                     CartList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
-                    //foreach (var item in CartList)
-                    //{
-                    //    item.RemoveItem = RemoveItemCommand;
-                    //}
                 }
             }
             catch (Exception ex)

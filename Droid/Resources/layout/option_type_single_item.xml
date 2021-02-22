@@ -10,13 +10,17 @@
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <RadioButton
+        <CheckBox
+                android:button="@drawable/checkbox_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:MvxBind="Visibility IsSingleChoice, Converter=Visibility;Checked IsSelected"/>
+        android:buttonTint="@color/app_color"
+        app:MvxBind="Visibility IsSingleChoice, Converter=Visibility;Checked IsSelected;Click ItemSelected"/>
          <CheckBox
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/app_color"
           app:MvxBind="Visibility IsMultiChoice, Converter=Visibility;Checked IsSelected"/>
 
 </RelativeLayout>

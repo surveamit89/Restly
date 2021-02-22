@@ -55,5 +55,5 @@
             android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        app:MvxItemTemplate="@layout/option_type_single_item"
-	        app:MvxBind="ItemsSource Options;"/>
+	        app:MvxBind="ItemsSource Options;Click OptionSelectedCommand"/>
 </LinearLayout>

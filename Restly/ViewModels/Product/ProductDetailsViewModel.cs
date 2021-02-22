@@ -134,7 +134,64 @@ namespace Restly.ViewModels.Product
                 return _decreaseCountCommand;
             }
         }
-        
+        private ICommand _selectMoreItemCommand;
+        public ICommand SelectMoreItemCommand
+        {
+            get
+            {
+                _selectMoreItemCommand = _selectMoreItemCommand ?? new MvxCommand<FrequentlyBoughtProduct>(ProcessSelectMoreItemCommand);
+                return _selectMoreItemCommand;
+            }
+        }
+
+        private IMvxCommand _optionSelectedCommand;
+        public IMvxCommand OptionSelectedCommand
+        {
+            get
+            {
+                _optionSelectedCommand = _optionSelectedCommand ?? new MvxCommand<OptionData>(ProcessOptionSelectedCommand);
+                return _optionSelectedCommand;
+            }
+        }
+        /// <summary>
+        /// validating option with single selection and multi selection
+        /// </summary>
+        private void ProcessOptionSelectedCommand(OptionData obj)
+        {
+            try
+            {
+                if (obj.IsSingleChoice)
+                {
+                    foreach (var item in SelectedProduct.Options)
+                    {
+                        var found = item.Options.FirstOrDefault(a => a.Id == obj.Id);
+                        if (found != null)
+                        {
+                            foreach (var subitem in item.Options)
+                            {
+                                if (subitem.Id == obj.Id)
+                                {
+                                    if (!subitem.IsSelected)
+                                    {
+                                        subitem.IsSelected = false;
+                                    }
+                                }
+                                else
+                                {
+                                    subitem.IsSelected = false;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
         #endregion
 
         #region  Constructor
@@ -162,6 +219,9 @@ namespace Restly.ViewModels.Product
         {
             NavigationService.Close(this);
         }
+        /// <summary>
+        /// add to cart item
+        /// </summary>
         private void ProcessAddToCartCommand()
         {
             try
@@ -196,8 +256,6 @@ namespace Restly.ViewModels.Product
                             BackCommand?.Execute(this);
                         }
                     });
-                    //Mvx.IoCProvider.Resolve<IMessageBox>().ShowMessageBox("Product added in cart Successfully.", null, true);
-                    //NavigationService.Navigate<DashBoardViewModel>();
                 }
                 else
                 {
@@ -218,7 +276,9 @@ namespace Restly.ViewModels.Product
                 Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
             }
         }
-
+        /// <summary>
+        /// validfation
+        /// </summary>
         private BaseResponse ValidateRequest()
         {
             BaseResponse response = new BaseResponse();
@@ -313,8 +373,7 @@ namespace Restly.ViewModels.Product
                     foreach (var subitem in item.Options)
                     {
                         subitem.IsSingleChoice = item.IsSingleChoice;
-                        //item.Min = 1;
-                        //item.Max = 2;
+                        subitem.ItemSelectedCommand = OptionSelectedCommand;
                     }
                 }
 
@@ -344,6 +403,22 @@ namespace Restly.ViewModels.Product
                 if (CartProductCount!=1)
                 {
                     CartProductCount--;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private void ProcessSelectMoreItemCommand(FrequentlyBoughtProduct obj)
+        {
+            try
+            {
+                var found = SelectedProduct.FrequentlyBoughtProducts.FirstOrDefault(a => a.Id == obj.Id);
+                if (found!=null)
+                {
+                    found.IsSelected=!found.IsSelected;
                 }
             }
             catch (Exception ex)
