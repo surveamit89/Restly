@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:weightSum="10">
     <LinearLayout 
+        android:layout_weight="8"
         android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="25dp">
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -37,34 +40,23 @@
             app:MvxBind="Text Name"/>
 </LinearLayout>
     <LinearLayout
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-           android:gravity="end"  
+        android:gravity="end"  
         android:layout_alignParentEnd="true"
-        android:layout_height="30dp">
-             <TextView
-                android:text="$"
-                 android:layout_marginEnd="5dp"
-                android:textSize="16dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white_color"
-               android:fontFamily="@font/montserrat_regular"/>
-
-             <TextView
-            android:text="4.5 "
-            android:textSize="16dp"
+        android:layout_height="25dp">
+           <TextView
+            android:text="+ $ 4.5 "
+            android:textSize="12dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white_color"
+            android:textColor="@color/gray_text_color"
             android:fontFamily="@font/montserrat_regular"
-            app:MvxBind="Text Price"/>
+            app:MvxBind="Text DisplayPrice"/>
            
          </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

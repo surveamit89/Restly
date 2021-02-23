@@ -37,7 +37,6 @@ namespace Restly.Services
         public static async Task<T> ExecuteGet<T>(RestRequest request) where T : new()
         {
             request.Method = Method.GET;
-            //request.AddParameter("language_code", Mvx.IoCProvider.Resolve<IPersistData>().GetLanguageCode(), ParameterType.HttpHeader);
             request.AddParameter("Content-Type", "application/json", ParameterType.HttpHeader);
            
             if (AppUtility.IsConnectedToInternet())
@@ -73,16 +72,12 @@ namespace Restly.Services
                         case HttpStatusCode.Unauthorized:
                             {
                                 UserDialogs.Instance.Alert(response.StatusDescription + " " + "");
-                               
-                                //Mvx.IoCProvider.Resolve<IPersistData>().SetIsUserLogin(false);
-                                //var messege = Mvx.IoCProvider.Resolve<IMvxMessenger>();
-                                //messege.Publish(new LoginMessage(new ViewModels.BaseViewModel()));
                             }
                             break;
 
                         case HttpStatusCode.InternalServerError:
-                            {;
-                                UserDialogs.Instance.Alert(response.StatusDescription);// response.StatusCode);
+                            {
+                                UserDialogs.Instance.Alert(response.StatusDescription);
                             }
                             break;
 
@@ -90,11 +85,8 @@ namespace Restly.Services
                             {
                                 return JsonConvert.DeserializeObject<T>(response.Content);
                             }
-                            break;
-
                         case HttpStatusCode.NotFound:
                             {
-                                //TODO: Need to handle
                             }
                             break;
                         case HttpStatusCode.RequestTimeout:
@@ -159,15 +151,11 @@ namespace Restly.Services
 
                         case HttpStatusCode.Unauthorized:
                             {
-                                //Mvx.IoCProvider.Resolve<IPersistData>().SetIsUserLogin(false);
-                                //var messege = Mvx.IoCProvider.Resolve<IMvxMessenger>();
-                                //messege.Publish(new LoginMessage(new ViewModels.BaseViewModel()));
                             }
                             break;
 
                         case HttpStatusCode.InternalServerError:
                             {
-                                //var res = await DashboardService.ProcessToLogOut();
                                 UserDialogs.Instance.Alert(response.StatusDescription);// response.StatusCode);
                             }
                             break;
@@ -234,13 +222,5 @@ namespace Restly.Services
 
         }
         #endregion
-    }
-    public class BVClientFactory : DefaultHttpClientFactory
-    {
-        protected override HttpMessageHandler CreateMessageHandler(IRestClient client)
-        {
-            return new NativeMessageHandler(false, false);
-            //return new NativeMessageHandler();
-        }
     }
 }

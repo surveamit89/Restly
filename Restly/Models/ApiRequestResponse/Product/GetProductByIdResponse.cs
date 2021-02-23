@@ -188,6 +188,11 @@ namespace Restly.Models.ApiRequestResponse.Product
 
         [JsonProperty("isRequired")]
         public bool IsRequired { get; set; }
+
+        [JsonProperty("price")]
+        public long Price { get; set; }
+
+
         public bool IsSingleChoice { get; set; }
         public bool IsMultiChoice { get { return !IsSingleChoice; } }
         public bool ShowOptionalLabel { get { return !IsRequired; } }
@@ -220,6 +225,22 @@ namespace Restly.Models.ApiRequestResponse.Product
         private void ProcessItemSelected()
         {
             ItemSelectedCommand?.Execute(this);
+        }
+
+        public string DisplayPrice
+        {
+            get 
+            {
+                if (Price>0)
+                {
+                    return "+ $ "+Price;
+                }
+                else
+                {
+                    return "";
+                }
+                
+            }
         }
     }
 }
