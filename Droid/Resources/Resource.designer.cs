@@ -16469,25 +16469,28 @@ namespace Restly.Droid
 			public const int product_detail_single_item = 2131492947;
 			
 			// aapt resource value: 0x7F0C0054
-			public const int product_similar_single_item = 2131492948;
+			public const int product_similar_detail = 2131492948;
 			
 			// aapt resource value: 0x7F0C0055
-			public const int restaurant_single_item = 2131492949;
+			public const int product_similar_single_item = 2131492949;
 			
 			// aapt resource value: 0x7F0C0056
-			public const int select_dialog_item_material = 2131492950;
+			public const int restaurant_single_item = 2131492950;
 			
 			// aapt resource value: 0x7F0C0057
-			public const int select_dialog_multichoice_material = 2131492951;
+			public const int select_dialog_item_material = 2131492951;
 			
 			// aapt resource value: 0x7F0C0058
-			public const int select_dialog_singlechoice_material = 2131492952;
+			public const int select_dialog_multichoice_material = 2131492952;
 			
 			// aapt resource value: 0x7F0C0059
-			public const int support_simple_spinner_dropdown_item = 2131492953;
+			public const int select_dialog_singlechoice_material = 2131492953;
 			
 			// aapt resource value: 0x7F0C005A
-			public const int tag_single_item = 2131492954;
+			public const int support_simple_spinner_dropdown_item = 2131492954;
+			
+			// aapt resource value: 0x7F0C005B
+			public const int tag_single_item = 2131492955;
 			
 			static Layout()
 			{

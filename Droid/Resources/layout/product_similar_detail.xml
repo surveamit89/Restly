@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rounded_corner_white_box">
-    <RelativeLayout
+    android:background="@drawable/rounded_corner_white_box"
+    app:MvxBind="Click NothingCommand">
+     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <FFImageLoading.Cross.MvxCachedImageView
@@ -13,7 +14,7 @@
                  android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                app:MvxBind="ImagePath NavigationParam.SelectedMenu.ImageUrl"/>
+                app:MvxBind="ImagePath SelectedFrequentProduct.ImageUrl"/>
     <LinearLayout 
         android:paddingHorizontal="10dp"
       android:orientation="vertical"
@@ -43,7 +44,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/black_color"
             android:fontFamily="@font/montserrat_bold"
-            app:MvxBind="Text NavigationParam.SelectedMenu.Title"/>
+            app:MvxBind="Text SelectedFrequentProduct.Name"/>
          </LinearLayout>
          <LinearLayout
         android:orientation="horizontal"
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black_color"
             android:fontFamily="@font/montserrat_bold"
-            app:MvxBind="Text NavigationParam.SelectedMenu.Price"/>
+            app:MvxBind="Text SelectedFrequentProduct.Price"/>
            
          </LinearLayout>
     </LinearLayout>
@@ -91,7 +92,7 @@
             android:layout_height="match_parent"
             android:textColor="@color/gray_color"
             android:fontFamily="@font/montserrat_semibold"
-            app:MvxBind="Text NavigationParam.SelectedMenu.Description"
+            app:MvxBind="Text SelectedFrequentProduct.Description"
             android:scrollbars="horizontal"/>
      </HorizontalScrollView>
     <LinearLayout
@@ -109,7 +110,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:orientation="horizontal"
 	        app:MvxItemTemplate="@layout/tag_single_item"
-	        app:MvxBind="ItemsSource NavigationParam.SelectedMenu.TagList;"/>
+	        app:MvxBind="ItemsSource SelectedFrequentProduct.TagList;"/>
          </RelativeLayout>
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
@@ -127,7 +128,7 @@
             android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        app:MvxItemTemplate="@layout/product_detail_single_item"
-	        app:MvxBind="ItemsSource SelectedProduct.Options;"/>
+	        app:MvxBind="ItemsSource SelectedFrequentProduct.Options;"/>
       <TextView
             android:text="You may also like"
             android:layout_marginTop="5dp"
@@ -144,7 +145,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:orientation="horizontal"
 	        app:MvxItemTemplate="@layout/product_similar_single_item"
-	        app:MvxBind="ItemsSource SelectedProduct.FrequentlyBoughtProducts;ItemClick SelectMoreItemCommand"/>
+	        app:MvxBind="ItemsSource SelectedFrequentProduct.FrequentlyBoughtProducts;ItemClick SelectMoreItemCommand"/>
     <TextView
             android:text="Specific Preferences?"
             android:layout_marginTop="5dp"
@@ -177,18 +178,18 @@
     <RelativeLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
-       app:MvxBind="Click BackCommand">
+       app:MvxBind="Click HideSimilarItemDetailCommand">">
 
-   <ImageView
-            android:src="@drawable/back_arrow"
+    <ImageView
+            android:src="@drawable/ic_mtrl_chip_close_circle"
             android:id="@+id/backImageView"
            android:layout_marginTop="20dp"
             android:layout_width="36dp"
             android:layout_height="24dp"
              android:paddingStart="14.7dp"
-            />
+            android:tint="@color/app_color"/>
    </RelativeLayout>
-    <LinearLayout
+     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -218,7 +219,7 @@
                     android:layout_marginTop="5dp"
                 android:layout_height="30dp"
                 android:layout_width="0dp"
-                app:MvxBind="Click DecreaseCountCommand;Enabled EnabledDecreaseCount"/>
+                app:MvxBind="Click DecreaseFrequentCountCommand;Enabled EnabledDecreaseCountForFrequent"/>
            <TextView
                 android:layout_weight="1"
                 android:text="1"
@@ -228,24 +229,24 @@
                 android:textSize="18dp"
                 android:textColor="@color/black_color"
                 android:fontFamily="@font/montserrat_bold"
-                app:MvxBind="Text CartProductCount"/>
+                app:MvxBind="Text SelectedFrequentlyBoughtCount"/>
            <FFImageLoading.Cross.MvxCachedImageView
                 android:layout_weight="1"
                 android:src="@drawable/ic_plus_count"
                 android:layout_width="0dp"
                 android:tint="@color/app_color"
                 android:layout_height="match_parent"
-                app:MvxBind="Click IncreaseCountCommand"/>
+                app:MvxBind="Click IncreaseFrequentCountCommand"/>
         </LinearLayout>
         <RelativeLayout
              android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <TextView
-            android:text="Add To Cart"
+            android:text="Confirm"
             android:textSize="12dp"
-                    android:layout_marginHorizontal="15dp"
-                android:paddingHorizontal="20dp"
+            android:layout_marginHorizontal="15dp"
+            android:paddingHorizontal="20dp"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_gravity="center"
@@ -255,17 +256,9 @@
             android:textColor="@color/white_color"
             android:fontFamily="@font/montserrat_regular"
              android:backgroundTint="@color/app_color"
-                app:MvxBind="Click AddToCartCommand"/>
+                app:MvxBind="Click AddToCartConfirmCommand"/>
         </RelativeLayout>
     </LinearLayout>
     </LinearLayout>
- </RelativeLayout>
-    <RelativeLayout
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/semitransparent"
-        app:MvxBind="Visibility ShowSimilarItemDetail, Converter=Visibility;">
-        <include layout="@layout/product_similar_detail"/>
     </RelativeLayout>
 </RelativeLayout>

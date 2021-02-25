@@ -27,12 +27,12 @@ namespace Restly.Services.Restaurant
                 return null;
             }
         }
-        public static async Task<GetProductByIdResponse> ProcessToGetProductById(MenuData selectedProduct)
+        public static async Task<GetProductByIdResponse> ProcessToGetProductById(long productId)
         {
             try
             {
                 var request = new RestRequest(AppConstants.RestApi.GetProductById);
-                request.AddParameter("productId", selectedProduct.Id);
+                request.AddParameter("productId", productId);
                 //request.AddParameter("productId", 44);
                 var response = await BaseWebService.ExecuteGet<GetProductByIdResponse>(request);
 

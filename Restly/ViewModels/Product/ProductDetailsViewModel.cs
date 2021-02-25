@@ -40,8 +40,27 @@ namespace Restly.ViewModels.Product
                 RaisePropertyChanged(() => EnabledDecreaseCount);
             }
         }
+        private bool _showSimilarItemDetail = false;
+        public bool ShowSimilarItemDetail
+        {
+            get { return _showSimilarItemDetail; }
+            set
+            {
+                _showSimilarItemDetail = value;
+                RaisePropertyChanged(() => ShowSimilarItemDetail);
+            }
+        }
+        private bool _enabledDecreaseCountForFrequent = false;
+        public bool EnabledDecreaseCountForFrequent
+        {
+            get { return _enabledDecreaseCountForFrequent; }
+            set
+            {
+                _enabledDecreaseCountForFrequent = value;
+                RaisePropertyChanged(() => EnabledDecreaseCountForFrequent);
+            }
+        }
 
-        
         #endregion
 
         #region StringPropertyAndList
@@ -55,7 +74,7 @@ namespace Restly.ViewModels.Product
                 RaisePropertyChanged(() => NavigationParam);
             }
         }
-        
+
         private ObservableCollection<ProductData> _cartList;
         public ObservableCollection<ProductData> CartList
         {
@@ -78,7 +97,18 @@ namespace Restly.ViewModels.Product
             }
         }
 
-        private int _cartProductCount=1;
+        private ProductData _selectedFrequentProduct;
+        public ProductData SelectedFrequentProduct
+        {
+            get { return _selectedFrequentProduct; }
+            set
+            {
+                _selectedFrequentProduct = value;
+                RaisePropertyChanged(() => SelectedFrequentProduct);
+            }
+        }
+
+        private int _cartProductCount = 1;
         public int CartProductCount
         {
             get { return _cartProductCount; }
@@ -90,7 +120,28 @@ namespace Restly.ViewModels.Product
             }
         }
 
-        
+        private int _selectedFrequentlyBoughtCount = 1;
+        public int SelectedFrequentlyBoughtCount
+        {
+            get { return _selectedFrequentlyBoughtCount; }
+            set
+            {
+                _selectedFrequentlyBoughtCount = value;
+                RaisePropertyChanged(() => SelectedFrequentlyBoughtCount);
+                EnabledDecreaseCountForFrequent = value > 1 ? true : false;
+            }
+        }
+        private FrequentlyBoughtProduct _selectedFrequentlyBought;
+        public FrequentlyBoughtProduct SelectedFrequentlyBought
+        {
+            get { return _selectedFrequentlyBought; }
+            set
+            {
+                _selectedFrequentlyBought = value;
+                RaisePropertyChanged(() => SelectedFrequentlyBought);
+            }
+        }
+
         #endregion
 
         #region Command
@@ -123,7 +174,7 @@ namespace Restly.ViewModels.Product
             }
         }
 
-        
+
 
         private ICommand _decreaseCountCommand;
         public ICommand DecreaseCountCommand
@@ -153,6 +204,47 @@ namespace Restly.ViewModels.Product
                 return _optionSelectedCommand;
             }
         }
+        private ICommand _addToCartConfirmCommand;
+        public ICommand AddToCartConfirmCommand
+        {
+            get
+            {
+                _addToCartConfirmCommand = _addToCartConfirmCommand ?? new MvxCommand(ProcessAddToCartConfirmCommand);
+                return _addToCartConfirmCommand;
+            }
+        }
+        private ICommand _hideSimilarItemDetailCommand;
+        public ICommand HideSimilarItemDetailCommand
+        {
+            get
+            {
+                _hideSimilarItemDetailCommand = _hideSimilarItemDetailCommand ?? new MvxCommand(ProcessHideSimilarItemDetailCommand);
+                return _hideSimilarItemDetailCommand;
+            }
+        }
+        private ICommand _increaseFrequentCountCommand;
+        public ICommand IncreaseFrequentCountCommand
+        {
+            get
+            {
+                _increaseFrequentCountCommand = _increaseFrequentCountCommand ?? new MvxCommand(ProcessIncreaseFrequentCountCommand);
+                return _increaseFrequentCountCommand;
+            }
+        }
+
+
+
+        private ICommand _decreaseFrequentCountCommand;
+        public ICommand DecreaseFrequentCountCommand
+        {
+            get
+            {
+                _decreaseFrequentCountCommand = _decreaseFrequentCountCommand ?? new MvxCommand(ProcessDecreaseFrequentCountCommand);
+                return _decreaseFrequentCountCommand;
+            }
+        }
+
+
         /// <summary>
         /// validating option with single selection and multi selection
         /// </summary>
@@ -226,27 +318,11 @@ namespace Restly.ViewModels.Product
         {
             try
             {
-                BaseResponse result = ValidateRequest();
-                if (result.Code==200)
+                BaseResponse result = ValidateRequest(SelectedProduct);
+                if (result.Code == 200)
                 {
-                    var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
-                    if (string.IsNullOrEmpty(myCartdata) || myCartdata == "null")
-                    {
-                        CartList = new ObservableCollection<ProductData>();
-                        SelectedProduct.CartProductCount = CartProductCount;
-                        CartList.Add(SelectedProduct);
-                        Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartList));
-
-                    }
-                    else
-                    {
-                        CartList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
-                        SelectedProduct.CartProductCount = CartProductCount;
-                        CartList.Add(SelectedProduct);
-                        Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartList));
-                    }
-
-
+                    SelectedProduct.CartProductCount = CartProductCount;
+                    UpdateDataInCart(SelectedProduct);
                     UserDialogs.Instance.Alert(new AlertConfig
                     {
                         Message = "Product added in cart successfully.",
@@ -265,7 +341,7 @@ namespace Restly.ViewModels.Product
                         OkText = AppResources.Lbl_OK,
                         OnAction = () =>
                         {
-                            
+
                         }
                     });
                 }
@@ -276,15 +352,43 @@ namespace Restly.ViewModels.Product
                 Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
             }
         }
+
+        private void UpdateDataInCart(ProductData selectedProduct)
+        {
+            try
+            {
+                var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
+                if (string.IsNullOrEmpty(myCartdata) || myCartdata == "null")
+                {
+                    CartList = new ObservableCollection<ProductData>();
+                    
+                    CartList.Add(selectedProduct);
+                    Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartList));
+
+                }
+                else
+                {
+                    CartList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                    CartList.Add(selectedProduct);
+                    Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartList));
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         /// <summary>
         /// validfation
         /// </summary>
-        private BaseResponse ValidateRequest()
+        private BaseResponse ValidateRequest(ProductData selectedProduct)
         {
             BaseResponse response = new BaseResponse();
             try
             {
-                foreach (var item in SelectedProduct.Options)
+                foreach (var item in selectedProduct.Options)
                 {
                     if (item.IsRequired && !item.Options.Any(a => a.IsSelected))
                     {
@@ -293,7 +397,7 @@ namespace Restly.ViewModels.Product
                         return response;
                     }
 
-                    var validData =new ObservableCollection<OptionData>(item.Options.Where(a => a.IsSelected));
+                    var validData = new ObservableCollection<OptionData>(item.Options.Where(a => a.IsSelected));
                     if (item.IsRequired && validData?.Count > 0)
                     {
                         if (item.Max != 0 && validData?.Count() > item.Max)
@@ -309,8 +413,8 @@ namespace Restly.ViewModels.Product
                             return response;
                         }
                     }
-                    
-                    else if(!item.IsRequired && validData?.Count>0)
+
+                    else if (!item.IsRequired && validData?.Count > 0)
                     {
                         if (item.Max != 0 && validData?.Count() > item.Max)
                         {
@@ -344,13 +448,15 @@ namespace Restly.ViewModels.Product
             try
             {
                 Mvx.IoCProvider.Resolve<IAppLoader>().ShowIndicator();
-                var response = await ProductService.ProcessToGetProductById(SelectedMenu);
+                var response = await ProductService.ProcessToGetProductById(SelectedMenu.Id);
                 Mvx.IoCProvider.Resolve<IAppLoader>().StopIndicator();
                 if (response != null)
                 {
                     if (response != null)// && response.Code == AppConstants.SuccessCode)
                     {
-                        AssignData(response.Data);
+                        SelectedProduct = response.Data;
+                        AssignData(SelectedProduct);
+                        AssignFrequentDataDetails(SelectedProduct);
                     }
                     else
                     {
@@ -376,8 +482,6 @@ namespace Restly.ViewModels.Product
                         subitem.ItemSelectedCommand = OptionSelectedCommand;
                     }
                 }
-
-                SelectedProduct = data;
             }
             catch (Exception ex)
             {
@@ -400,7 +504,7 @@ namespace Restly.ViewModels.Product
         {
             try
             {
-                if (CartProductCount!=1)
+                if (CartProductCount != 1)
                 {
                     CartProductCount--;
                 }
@@ -411,14 +515,168 @@ namespace Restly.ViewModels.Product
             }
         }
 
-        private void ProcessSelectMoreItemCommand(FrequentlyBoughtProduct obj)
+        private async void ProcessSelectMoreItemCommand(FrequentlyBoughtProduct obj)
         {
             try
             {
-                var found = SelectedProduct.FrequentlyBoughtProducts.FirstOrDefault(a => a.Id == obj.Id);
-                if (found!=null)
+                var found = SelectedProduct.FrequentlyBoughtProducts.FirstOrDefault(a => a.Id == obj?.Id);
+                if (found != null && found.IsSelected)
                 {
-                    found.IsSelected=!found.IsSelected;
+                    found.IsSelected = false;
+                    SelectedFrequentlyBought = null;
+                    ShowSimilarItemDetail = false;
+                    ProcessRemoveItemCommand(found.Id);
+                }
+                else
+                {
+                    SelectedFrequentlyBought = obj;
+                    SelectedFrequentlyBoughtCount = 1;
+                    Mvx.IoCProvider.Resolve<IAppLoader>().ShowIndicator();
+                    var response = await ProductService.ProcessToGetProductById(obj.Id);
+                    Mvx.IoCProvider.Resolve<IAppLoader>().StopIndicator();
+                    if (response != null)
+                    {
+                        if (response != null)// && response.Code == AppConstants.SuccessCode)
+                        {
+                            SelectedFrequentProduct = response.Data;
+                            AssignData(SelectedFrequentProduct);
+                            AssignFrequentDataDetails(SelectedFrequentProduct);
+                        }
+                        else
+                        {
+                            Mvx.IoCProvider.Resolve<IMessageBox>().ShowMessageBox(response.Message, null, false);
+                        }
+                    }
+                    ShowSimilarItemDetail = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+        private void ProcessAddToCartConfirmCommand()
+        {
+            try
+            {
+                BaseResponse result = ValidateRequest(SelectedFrequentProduct);
+                if (result.Code == 200)
+                {
+                    SelectedFrequentProduct.CartProductCount = SelectedFrequentlyBoughtCount;
+                    UpdateDataInCart(SelectedFrequentProduct);
+                    UserDialogs.Instance.Alert(new AlertConfig
+                    {
+                        Message = "Product added in cart successfully.",
+                        OkText = AppResources.Lbl_OK,
+                        OnAction = () =>
+                        {
+                            ShowSimilarItemDetail = false;
+                            AssignFrequentDataDetails(SelectedProduct);
+                        }
+                    });
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert(new AlertConfig
+                    {
+                        Message = result.Message,
+                        OkText = AppResources.Lbl_OK,
+                        OnAction = () =>
+                        {
+
+                        }
+                    });
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private void ProcessHideSimilarItemDetailCommand()
+        {
+            try
+            {
+                ShowSimilarItemDetail = false;
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private void AssignFrequentDataDetails(ProductData selected)
+        {
+            try
+            {
+                var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
+                if (!string.IsNullOrEmpty(myCartdata) && myCartdata != "null")
+                {
+                   var CartDataList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                    foreach (var item in CartDataList)
+                    {
+                        var found = selected.FrequentlyBoughtProducts.FirstOrDefault(a => a.Id == item?.Id);
+                        if (found != null )
+                        {
+                            found.IsSelected = true;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private void ProcessRemoveItemCommand(long item)
+        {
+            try
+            {
+                var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
+                if (!string.IsNullOrEmpty(myCartdata) && myCartdata != "null")
+                {
+                    var CartDataList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                    CartDataList.Remove(CartDataList.FirstOrDefault(a=>a.Id==item));
+                    if (CartDataList != null && CartDataList?.Count > 0)
+                    {
+                        Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartDataList));
+                    }
+                    else
+                    {
+                        Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(null));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private void ProcessIncreaseFrequentCountCommand()
+        {
+            try
+            {
+                SelectedFrequentlyBoughtCount++;
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+        private void ProcessDecreaseFrequentCountCommand()
+        {
+            try
+            {
+                if (SelectedFrequentlyBoughtCount != 1)
+                {
+                    SelectedFrequentlyBoughtCount--;
                 }
             }
             catch (Exception ex)

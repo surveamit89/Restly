@@ -79,7 +79,7 @@ namespace Restly.Models.ApiRequestResponse.Product
                 RaisePropertyChanged(() => TagList);
             }
         }
-        public int CartProductCount { get; set; }
+        public long CartProductCount { get; set; }
     }
     public partial class FrequentlyBoughtProduct:MvxViewModel
     {
@@ -95,7 +95,8 @@ namespace Restly.Models.ApiRequestResponse.Product
         [JsonProperty("price")]
         public long Price { get; set; }
 
-        
+
+        public long CartProductCount { get; set; }
 
         private bool _isSelected = false;
         public bool IsSelected
