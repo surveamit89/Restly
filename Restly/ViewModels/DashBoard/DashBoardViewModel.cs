@@ -311,7 +311,6 @@ namespace Restly.ViewModels.DashBoard
         #endregion
 
         #region  Constructor
-
         public override void ViewAppeared()
         {
             SelectedRestaurant = null;
@@ -417,7 +416,10 @@ namespace Restly.ViewModels.DashBoard
                     }
                     else
                     {
-                        var rest = OGMenuList.Where(a => a.Description.ToLower().Contains(SelectedCategory.Title.ToLower()));
+                        //var rest = OGMenuList.Where(a => a.Description.ToLower().Contains(SelectedCategory.Title.ToLower()));
+                        var rest = from p in OGMenuList
+                                   where !string.IsNullOrEmpty(p.Description) && p.Description.ToLower().Contains(SelectedCategory.Title.ToLower())
+                                   select p;
                         MenuList = new ObservableCollection<MenuData>(rest);
                     }
                 }
@@ -430,7 +432,9 @@ namespace Restly.ViewModels.DashBoard
                     }
                     else
                     {
-                        var rest = OGRestaurantsList.Where(a => a.Categories.ToLower().Contains(SelectedCategory.Title.ToLower()));
+                        //var rest = OGRestaurantsList.Where(a =>a.Categories.ToLower().Contains(SelectedCategory.Title.ToLower()));
+                        var rest=from p in OGRestaurantsList
+                                  where !string.IsNullOrEmpty(p.Categories) && p.Categories.ToLower().Contains(SelectedCategory.Title.ToLower()) select p;
                         RestaurantsList = new ObservableCollection<RestaurantData>(rest);
                     }
                 }
@@ -497,7 +501,7 @@ namespace Restly.ViewModels.DashBoard
         {
             try
             {
-                NavigationService.Navigate<CartViewModel>();
+               
             }
             catch (Exception ex)
             {

@@ -21,7 +21,7 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="match_parent">
- <LinearLayout
+    <LinearLayout
         android:paddingHorizontal="7dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -108,7 +108,7 @@
 	        app:MvxBind="ItemsSource TagList;"/>
          </RelativeLayout>
     </LinearLayout>
-       <LinearLayout
+    <LinearLayout
         android:paddingHorizontal="7dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -149,7 +149,8 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="5">
+        android:layout_weight="5"
+                app:MvxBind="Click RemoveItemCommand">
              <TextView
                     android:layout_marginHorizontal="15dp"
             android:text="REMOVE"

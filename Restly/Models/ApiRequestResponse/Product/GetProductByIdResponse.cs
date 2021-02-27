@@ -80,6 +80,25 @@ namespace Restly.Models.ApiRequestResponse.Product
             }
         }
         public long CartProductCount { get; set; }
+
+        [JsonIgnore]
+        public IMvxCommand RemoveItemSelectedCommand { get; set; }
+        [JsonIgnore]
+        private IMvxCommand _removeItemCommand { get; set; }
+        [JsonIgnore]
+        public IMvxCommand RemoveItemCommand
+        {
+            get
+            {
+                return _removeItemCommand ?? (_removeItemCommand = new MvxCommand(ProcessRemoveItemCommand));
+            }
+        }
+
+
+        private void ProcessRemoveItemCommand()
+        {
+            RemoveItemSelectedCommand?.Execute(this);
+        }
     }
     public partial class FrequentlyBoughtProduct:MvxViewModel
     {

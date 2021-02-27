@@ -60,6 +60,28 @@ namespace Restly.ViewModels.Product
                 RaisePropertyChanged(() => EnabledDecreaseCountForFrequent);
             }
         }
+       
+        private bool _isFromCart = false;
+        public bool IsFromCart
+        {
+            get { return _isFromCart; }
+            set
+            {
+                _isFromCart = value;
+                RaisePropertyChanged(() => IsFromCart);
+                IsNotFromCart = !value;
+            }
+        }
+        private bool _isNotFromCart = true;
+        public bool IsNotFromCart
+        {
+            get { return _isNotFromCart; }
+            set
+            {
+                _isNotFromCart = value;
+                RaisePropertyChanged(() => IsNotFromCart);
+            }
+        }
 
         #endregion
 
@@ -161,6 +183,16 @@ namespace Restly.ViewModels.Product
             {
                 _addToCartCommand = _addToCartCommand ?? new MvxCommand(ProcessAddToCartCommand);
                 return _addToCartCommand;
+            }
+        }
+
+        private ICommand _removeFromCartCommand;
+        public ICommand RemoveFromCartCommand
+        {
+            get
+            {
+                _removeFromCartCommand = _removeFromCartCommand ?? new MvxCommand(ProcessRemoveFromCartCommand);
+                return _removeFromCartCommand;
             }
         }
 
@@ -457,6 +489,7 @@ namespace Restly.ViewModels.Product
                         SelectedProduct = response.Data;
                         AssignData(SelectedProduct);
                         AssignFrequentDataDetails(SelectedProduct);
+                        CheckIsFromCart(SelectedMenu.Id);
                     }
                     else
                     {
@@ -684,6 +717,67 @@ namespace Restly.ViewModels.Product
                 Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
             }
         }
+
+        private void CheckIsFromCart(long ID)
+        {
+            try
+            {
+                var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
+                if (!string.IsNullOrEmpty(myCartdata) && myCartdata != "null")
+                {
+                    var CartDataList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                    var found = CartDataList.FirstOrDefault(a => a.Id == ID);
+                    if (found != null)
+                    {
+                        IsFromCart = true;
+                    }
+                    else
+                    {
+                        IsFromCart = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
+        private async void ProcessRemoveFromCartCommand()
+        {
+            try
+            {
+
+                var result = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                {
+                    Message = "Do you want to remove item from cart?",
+                    OkText = AppResources.Lbl_Yes,
+                    CancelText = AppResources.Lbl_No
+                });
+                if (result)
+                {
+                    var myCartdata = Mvx.IoCProvider.Resolve<IPersistData>().GetCartData();
+                    if (!string.IsNullOrEmpty(myCartdata) && myCartdata != "null")
+                    {
+                        var CartDataList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                        var found = CartDataList.FirstOrDefault(a => a.Id == SelectedProduct.Id);
+                        if (found != null)
+                        {
+                            CartDataList.Remove(found);
+                            Mvx.IoCProvider.Resolve<IPersistData>().SetCartData(JsonConvert.SerializeObject(CartDataList));
+                            IsFromCart = false;
+                        }
+                    }
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(ProductDetailsViewModel), ex);
+            }
+        }
+
         #endregion
     }
 }

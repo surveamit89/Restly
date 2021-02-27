@@ -189,10 +189,12 @@
             />
    </RelativeLayout>
     <LinearLayout
+            android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        app:MvxBind="Visibility IsNotFromCart, Converter=Visibility">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -258,6 +260,37 @@
                 app:MvxBind="Click AddToCartCommand"/>
         </RelativeLayout>
     </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:MvxBind="Visibility IsFromCart, Converter=Visibility">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/shadow_effect"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+            android:text="Remove from cart"
+            android:textSize="12dp"
+                    android:layout_marginHorizontal="15dp"
+                android:paddingHorizontal="20dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/white_color"
+            android:fontFamily="@font/montserrat_semibold"
+             android:backgroundTint="@android:color/holo_red_dark"
+                app:MvxBind="Click RemoveFromCartCommand"/>
+        </RelativeLayout>
     </LinearLayout>
  </RelativeLayout>
     <RelativeLayout

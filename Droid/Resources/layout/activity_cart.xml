@@ -36,5 +36,5 @@
             android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        app:MvxItemTemplate="@layout/cart_single_item"
-	        app:MvxBind="ItemsSource CartList;ItemClick RemoveItemCommand"/>
+	        app:MvxBind="ItemsSource CartList"/>
 </LinearLayout>

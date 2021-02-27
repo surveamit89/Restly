@@ -82,6 +82,26 @@ namespace Restly.ViewModels.Order
                 else
                 {
                     CartList = JsonConvert.DeserializeObject<ObservableCollection<ProductData>>(myCartdata);
+                    if (CartList.Count>0)
+                    {
+                        foreach (var item in CartList)
+                        {
+                            item.RemoveItemSelectedCommand = RemoveItemCommand;
+                        }
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Alert(new AlertConfig
+                        {
+                            Message = "Sorry, Cart is empty.",
+                            OkText = AppResources.Lbl_OK,
+                            OnAction = () =>
+                            {
+                                BackCommand?.Execute(this);
+                            }
+                        });
+                    }
+                    
                 }
             }
             catch (Exception ex)
