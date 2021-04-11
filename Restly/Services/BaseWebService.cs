@@ -18,7 +18,6 @@ namespace Restly.Services
 {
     public static class BaseWebService
     {
-        public static string AppBaseUrl = "https://restly.deventure.ro/api/";
         #region Available Constructors
         public static RestClient _restClient = new RestClient(AppBaseUrl)
         {

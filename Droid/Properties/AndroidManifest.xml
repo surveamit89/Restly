@@ -6,6 +6,5 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:hardwareAccelerated="true" android:largeHeap="true" android:requestLegacyExternalStorage="true" android:allowBackup="true" android:label="Restly">
-	</application>
+	<application android:hardwareAccelerated="true" android:largeHeap="true" android:requestLegacyExternalStorage="true" android:allowBackup="true" android:label="Restly"></application>
 </manifest>

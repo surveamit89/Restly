@@ -1,6 +1,7 @@
 ﻿using MvvmCross;
 using MvvmCross.Commands;
 using Restly.Helper.HelperInterface;
+using Restly.ViewModels.DashBoard;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,15 @@ namespace Restly.ViewModels.Splash
 {
     public class SplashViewModel : BaseViewModel
     {
+        public SplashViewModel()
+        {
+            int x = 0;
+            x++;
+        }
         #region  GlobalVariables
+
+        public int BackgroundColor => 0x2ca56e;
+
         #endregion
 
         #region Labels
@@ -20,6 +29,9 @@ namespace Restly.ViewModels.Splash
         #endregion
 
         #region StringPropertyAndList
+
+        public string WelcomeMessage => "Welcome back! Please wait while the application loads...";
+
         #endregion
 
         #region Command
@@ -55,12 +67,12 @@ namespace Restly.ViewModels.Splash
         {
             try
             {
-                //NavigationService.Navigate<DashBoardViewModel>();
+                NavigationService.Navigate<DashBoardViewModel>();
             }
             catch (Exception ex)
             {
-                Mvx.IoCProvider.Resolve<IAppLoader>().StopIndicator();
-                Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(SplashViewModel), ex);
+                //Mvx.IoCProvider.Resolve<IAppLoader>().StopIndicator();
+                //Mvx.IoCProvider.Resolve<IAppLogger>().DebugLog(nameof(SplashViewModel), ex);
             }
         }
         #endregion

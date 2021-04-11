@@ -26,6 +26,10 @@ namespace Restly.ViewModels.DashBoard
         #endregion
 
         #region Labels
+
+        public string ClearText => "Clear";
+        public string SearchHint => "Search for a product or restaurant";
+
         public string ExitAppTitle
         {
             get { return AppResources.Msg_ExitTheApp; }
@@ -347,8 +351,30 @@ namespace Restly.ViewModels.DashBoard
                     }
                     else
                     {
-                        Mvx.IoCProvider.Resolve<IMessageBox>().ShowMessageBox(response.Message, null, false);
+                       Mvx.IoCProvider.Resolve<IMessageBox>().ShowMessageBox(response.Message, null, false);
                     }
+                }
+                else
+                {
+                    var categoryList = new ObservableCollection<RestaurantsCategory>
+                    {
+                        new RestaurantsCategory { Id = 0, Title = "All", ImageUrl = new Uri("https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"), SelectedBackgroundColor = "WhiteColor", SelectedTextColor = "BlackColor" },
+                        new RestaurantsCategory { Id = 1, Title = "Desert", ImageUrl = new Uri("https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"), SelectedBackgroundColor = "WhiteColor", SelectedTextColor = "BlackColor" },
+                        new RestaurantsCategory { Id = 2, Title = "Pizza", ImageUrl = new Uri("https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"), SelectedBackgroundColor = "WhiteColor", SelectedTextColor = "BlackColor" },
+                        new RestaurantsCategory { Id = 3, Title = "Burger", ImageUrl = new Uri("https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"), SelectedBackgroundColor = "WhiteColor", SelectedTextColor = "BlackColor" }
+                    };
+                     
+                    CategoryList = categoryList;
+
+                    var restaurants = new ObservableCollection<RestaurantData>
+                    {
+                        new RestaurantData { Id = 0, Title = "Jacks Burger", ImageUrl = new Uri("https://dadarestaurant.ro/wp-content/uploads/2019/03/cropped-dada-restaurant-bun-bucuresti-6.jpg"), Categories = "pizza, burger, desert",Rating=4},
+                        new RestaurantData { Id = 1, Title = "Pizza place", ImageUrl = new Uri("https://dadarestaurant.ro/wp-content/uploads/2019/03/cropped-dada-restaurant-bun-bucuresti-6.jpg"), Categories = "pizza, burger",Rating=1},
+                        new RestaurantData { Id = 2, Title = "Pizza second place", ImageUrl = new Uri("https://dadarestaurant.ro/wp-content/uploads/2019/03/cropped-dada-restaurant-bun-bucuresti-6.jpg"), Categories = "pizza, burger, desert",Rating=3},
+                        new RestaurantData { Id = 3, Title = "Burger Joint", ImageUrl = new Uri("https://dadarestaurant.ro/wp-content/uploads/2019/03/cropped-dada-restaurant-bun-bucuresti-6.jpg"), Categories = "pizza, desert",Rating=5},
+                    };
+                    OGRestaurantsList = restaurants;
+                    RestaurantsList = restaurants;
                 }
             }
             catch (Exception ex)
